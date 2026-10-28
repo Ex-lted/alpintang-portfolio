@@ -1,0 +1,10 @@
+Sound effects used on this website (all listed as CC0 1.0 on Freesound):
+
+"Classic Click" by adh.dreaming  - https://freesound.org/people/adh.dreaming/sounds/671105/
+"Whoosh" by qubodup              - https://freesound.org/people/qubodup/sounds/60013/
+"POP SFX Neutral" by ethernel0   - https://freesound.org/people/ethernel0/sounds/776016/
+"soft_impact3" by peoplearehappy - https://freesound.org/people/peoplearehappy/sounds/841274/
+"Click / Tick" by Squirrel_404   - https://freesound.org/people/Squirrel_404/sounds/683048/
+
+The files here are trimmed, level-matched MP3 copies of the originals.
+Credit is not required for CC0, but this list is proof of source.
