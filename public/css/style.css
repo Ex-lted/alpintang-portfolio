@@ -1,4 +1,4 @@
-
+/* ---------- 1) BASE SITE ---------- */
 :root {
   --bg:#f4f3ef;
   --fg:#1d1d1f;
@@ -737,10 +737,23 @@ footer {
 
 .proj-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  grid-template-columns: minmax(0, 1fr);          /* phones: 1 column */
   gap: 24px;
   align-items: stretch;
   padding-bottom: 28px;
+}
+
+/* Tablets: 2 columns */
+@media (min-width: 700px) {
+  .proj-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Laptops and desktops: 3 columns, on a wider page */
+@media (min-width: 1100px) {
+  #projects .wrap { max-width: 1260px; }
+  .proj-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .proj-grid .proj { padding: 28px; }
+  .proj-grid .proj h3 { font-size: clamp(24px, 2.3vw, 32px); }
 }
 
 /* Cards: tighter than the full-width version */
