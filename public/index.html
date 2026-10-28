@@ -1,112 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Alpin.</title>
-<meta name="description" content="Student, software builder, and curious about how things work.">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Alpin">
-<meta property="og:title" content="Alpin.">
-<meta property="og:description" content="Student, software builder, and curious about how things work.">
-<meta property="og:image" content="https://www.alpintang.xyz/og-image.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="icon" href="favicon.ico" sizes="48x48">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/projects-grid.css">
-<link rel="stylesheet" href="css/effects.css">
-</head>
-<body>
-<header>
-<nav><a href="#about" data-p="about">About</a><a href="#projects" data-p="projects">Projects</a><a href="#contact" data-p="contact">Contact</a></nav><button id="theme" type="button" aria-label="Switch between light and dark mode"></button>
-</header>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+		<title>Alpin.</title>
 
-<main>
-<div class="page" id="about">
-<div class="hero left bg bg-me" id="hero">
-<div class="eyebrow">Hello, I’m</div>
-<h1 class="jump" aria-label="Alpin."><span aria-hidden="true" style="--i:0">A</span><span aria-hidden="true" style="--i:1">l</span><span aria-hidden="true" style="--i:2">p</span><span aria-hidden="true" style="--i:3">i</span><span aria-hidden="true" style="--i:4">n</span><span aria-hidden="true" style="--i:5">.</span></h1>
-<p class="sub">Student. Software builder. Curious about how things work.</p>
-<div class="cue">Scroll ↓</div>
-</div>
-<section><div class="wrap"><p class="words" id="words">I’m a Chinese-Indonesian born in Pulau Pinang in 2007. I’ve been curious about technology for as long as I can remember. When I was 7, my parents gifted me a PC, and that’s where everything started.</p></div></section>
-<section style="padding-top:0"><div class="wrap" style="position:relative">
-<h2 class="rv">My story.</h2>
-<div class="story">
-<div class="step rv"><small>Age 11</small><h3>It started with Roblox Studio.</h3><p>My programming journey began at 11 years old in the Roblox Studio ecosystem. Nobody handed me a course. I taught myself, one personal game project at a time, building things, breaking them, and slowly figuring out why they broke.</p></div>
-<div class="step rv"><small>2022</small><h3>Going (sort of) professional.</h3><p>All that self-taught tinkering grew into something real. In 2022 I was given a contributor position at a game development company, and working on live games alongside a proper team sharpened my technical skills far beyond what I could have managed on my own.</p></div>
-<div class="step rv"><small>Early 2025</small><h3>SPM done, time to level up.</h3><p>After finishing my SPM in early 2025, I moved into a part-time contracted developer role at the same company. I kept contributing to their platform until July 2025, right before university began.</p></div>
-<div class="step rv"><small>Today</small><h3>Now at Multimedia University.</h3><p>These days I’m balancing coursework, team projects and tools of my own, like CLiCScrape. Outside of code, I love photography and hiking.</p></div>
-</div>
-<p class="rv closing">Always building, always learning. If that sounds like someone you’d like to work with, say hi.</p>
-<div class="pol rv"><div class="polaroid"><span class="tape t1"></span><span class="tape t2"></span><img src="images/polaroid.jpg" alt="Oreo, a long-haired tabby cat sitting on a tiled floor"><p>Say hi to Oreo!</p></div></div>
-</div></section>
-<section class="edu" style="padding-top:20px"><div class="wrap"><a class="btn rv" href="#projects" style="margin-top:0">See my work</a></div></section>
-</div>
+		<link rel="preload" href="sounds/click.mp3" as="fetch" type="audio/mpeg" crossorigin>
+		<link rel="preload" href="sounds/nav.mp3" as="fetch" type="audio/mpeg" crossorigin>
+		<link rel="preload" href="sounds/tick.mp3" as="fetch" type="audio/mpeg" crossorigin>
+		<link rel="preload" href="sounds/pop.mp3" as="fetch" type="audio/mpeg" crossorigin>
+		<link rel="preload" href="sounds/riser-synth.mp3" as="fetch" type="audio/mpeg" crossorigin>
+		<link rel="preload" href="sounds/impact.mp3" as="fetch" type="audio/mpeg" crossorigin>
 
-<div class="page" id="projects">
-<div class="phead bg bg-laptop"><h1 style="font-size:clamp(44px,9vw,96px)">Projects.</h1><p>Things I’ve built and shipped.</p></div>
-<div class="wrap">
+		<meta name="description" content="Student, software builder, and curious about how things work.">
+		<meta property="og:type" content="website">
+		<meta property="og:site_name" content="Alpin">
+		<meta property="og:title" content="Alpin.">
+		<meta property="og:description" content="Student, software builder, and curious about how things work.">
+		<meta property="og:image" content="https://www.alpintang.xyz/og-image.jpg">
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="630">
+		<meta name="twitter:card" content="summary_large_image">
+		<link rel="icon" href="icon.svg" type="image/svg+xml">
+		<link rel="icon" href="favicon.ico" sizes="48x48">
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/roadmap.css">
+	</head>
+	<body>
+		<header>
+			<nav>
+				<a href="#about" data-p="about">About</a>
+				<a href="#projects" data-p="projects">Projects</a>
+				<a href="#contact" data-p="contact">Contact</a>
+			</nav>
+			<button id="theme" type="button" aria-label="Switch between light and dark mode"></button>
+		</header>
 
-<div class="proj-grid">
+		<main>
+			<div class="page" id="about">
+				<div class="hero left bg bg-me" id="hero">
+					<div class="eyebrow">Hello, I’m</div>
+					<h1 class="jump" aria-label="Alpin.">
+						<span aria-hidden="true" style="--i:0">A</span>
+						<span aria-hidden="true" style="--i:1">l</span>
+						<span aria-hidden="true" style="--i:2">p</span>
+						<span aria-hidden="true" style="--i:3">i</span>
+						<span aria-hidden="true" style="--i:4">n</span>
+						<span aria-hidden="true" style="--i:5">.</span>
+					</h1>
+					<p class="sub">Student. Software builder. Curious about how things work.</p>
+					<div class="cue">Scroll ↓</div>
+				</div>
+				<section>
+					<div class="wrap">
+						<p class="words" id="words">I’m a Chinese-Indonesian born in Pulau Pinang in 2007. I’ve been curious about technology for as long as I can remember. When I was 7, my parents gifted me a PC, and that’s where everything started.</p>
+					</div>
+				</section>
+				<section style="padding-top:0">
+					<div class="wrap" style="position:relative">
+						<h2 class="rv">My story.</h2>
+						<div class="story">
+							<div class="step rv">
+								<small>2018</small>
+								<h3>It started with Roblox Studio.</h3>
+								<p>My programming journey began at 11 years old in the Roblox Studio ecosystem. Nobody handed me a course. I taught myself, one personal game project at a time, building things, breaking them, and slowly figuring out why they broke.</p>
+							</div>
+							<div class="step rv">
+								<small>2022</small>
+								<h3>Going (sort of) professional.</h3>
+								<p>All that self-taught tinkering grew into something real. In 2022 I was given a contributor position at a game development company, and working on live games alongside a proper team sharpened my technical skills far beyond what I could have managed on my own.</p>
+							</div>
+							<div class="step rv">
+								<small>Early 2025</small>
+								<h3>SPM done, time to level up.</h3>
+								<p>After finishing my SPM in early 2025, I moved into a part-time contracted developer role at the same company. I kept contributing to their platform until July 2025, right before university began.</p>
+							</div>
+							<div class="step rv">
+								<small>Today</small>
+								<h3>Now at Multimedia University.</h3>
+								<p>These days I’m balancing coursework, team projects and tools of my own, like CLiCScrape. Outside of code, I love photography and hiking.</p>
+							</div>
+						</div>
+						<p class="rv closing">Always building, always learning. If that sounds like someone you’d like to work with, say hi.</p>
+						<div class="pol rv">
+							<div class="polaroid">
+								<span class="tape t1"></span>
+								<span class="tape t2"></span>
+								<img src="images/polaroid.jpg" alt="Oreo, a long-haired tabby cat sitting on a tiled floor">
+								<p>Say hi to Oreo!</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="edu" style="padding-top:20px">
+					<div class="wrap">
+						<a class="btn rv" href="#projects" style="margin-top:0">See my work</a>
+					</div>
+				</section>
+			</div>
 
-<article class="proj rv">
-<div class="ph"><img class="pl" src="images/mysverse-icon.jpg" alt="MYSverse logo"><small>Game development</small></div>
-<h3>MYSverse</h3>
-<p>I contributed to MYSverse for three years and worked there as a part-time contract game developer. I programmed interactive minigames and core gameplay features for titles including Lebuhraya and Bandaraya, then kept the games healthy after release by monitoring player feedback and community reports and prioritising the most critical bugs for fixes.</p>
-<p>Through iterative updates, I improved overall playability and player retention.</p>
-<div class="media photo"><img src="images/mysverse-photo.jpg" alt="MYSverse contributor badge, lanyard and dev shirt"></div>
-<div class="tags"><i>LuaU</i><i>Game Development</i><i>UI/UX</i><i>Full Stack Developer</i></div>
-<a class="btn" href="https://mysver.se" target="_blank" rel="noopener">Visit mysver.se</a>
-</article>
+			<div class="page" id="projects">
+				<div class="phead bg bg-laptop">
+					<h1 style="font-size:clamp(44px,9vw,96px)">Projects.</h1>
+					<p>Things I’ve built and shipped.</p>
+				</div>
+				<div class="wrap">
+					<div class="proj-grid">
+						<article class="proj rv">
+							<div class="ph">
+								<img class="pl" src="images/mysverse-icon.jpg" alt="MYSverse logo">
+								<small>Game development</small>
+							</div>
+							<h3>MYSverse</h3>
+							<p>I contributed to MYSverse for three years and worked there as a part-time contract game developer. I programmed interactive minigames and core gameplay features for titles including Lebuhraya and Bandaraya, then kept the games healthy after release by monitoring player feedback and community reports and prioritising the most critical bugs for fixes.</p>
+							<p>Through iterative updates, I improved overall playability and player retention.</p>
+							<div class="media photo">
+								<img src="images/mysverse-photo.jpg" alt="MYSverse contributor badge, lanyard and dev shirt">
+							</div>
+							<div class="tags">
+								<i>LuaU</i>
+								<i>Game Development</i>
+								<i>UI/UX</i>
+								<i>Full Stack Developer</i>
+							</div>
+							<a class="btn" href="https://mysver.se" target="_blank" rel="noopener">Visit mysver.se</a>
+						</article>
 
-<article class="proj rv">
-<div class="ph"><img class="pl" src="images/clicscrape-icon.png" alt="CLiCScrape logo"><small>Chrome extension</small></div>
-<h3>CLiCScrape</h3>
-<p>A Chrome extension that walks you through MMU’s enrollment pages step by step, retrieves the class options for the courses you pick from pages you open yourself, and generates timetables that fit around every one of them.</p>
-<p>Filter by free days, earliest start, latest end, or open classes only, then compare each plan as a weekly grid. Everything runs in your browser, with no server and no accounts.</p>
-<div class="media"><video src="videos/clicscrape-demo.mp4" poster="images/clicscrape-poster.jpg" muted loop playsinline controls preload="metadata" data-auto></video></div>
-<div class="tags"><i>JavaScript</i><i>Manifest V3</i><i>Shadow DOM</i><i>Chrome extension</i></div>
-<a class="btn" href="https://chromewebstore.google.com/detail/clicscrape/gokpfkgfplfjlohjpkokoeljhdjddpjc" target="_blank" rel="noopener">View on Chrome Web Store</a>
-</article>
+						<article class="proj rv">
+							<div class="ph">
+								<img class="pl" src="images/clicscrape-icon.png" alt="CLiCScrape logo">
+								<small>Chrome extension</small>
+							</div>
+							<h3>CLiCScrape</h3>
+							<p>A Chrome extension that walks you through MMU’s enrollment pages step by step, retrieves the class options for the courses you pick from pages you open yourself, and generates timetables that fit around every one of them.</p>
+							<p>Filter by free days, earliest start, latest end, or open classes only, then compare each plan as a weekly grid. Everything runs in your browser, with no server and no accounts.</p>
+							<div class="media">
+								<video src="videos/clicscrape-demo.mp4" poster="images/clicscrape-poster.jpg" muted loop playsinline controls preload="metadata" data-auto></video>
+							</div>
+							<div class="tags">
+								<i>JavaScript</i>
+								<i>Manifest V3</i>
+								<i>Shadow DOM</i>
+								<i>Chrome extension</i>
+							</div>
+							<a class="btn" href="https://chromewebstore.google.com/detail/clicscrape/gokpfkgfplfjlohjpkokoeljhdjddpjc" target="_blank" rel="noopener">View on Chrome Web Store</a>
+						</article>
 
-<article class="proj rv">
-<div class="ph"><img class="pl" src="images/icon-2048.png" alt="Alpin."><small>Portfolio website</small></div>
-<h3>This website</h3>
-<p>I designed and built this portfolio website with plain HTML, CSS and JavaScript, with smooth page transitions, scroll-based animations, a light and dark theme you can switch between, and a layout that adapts from phones to wide screens.</p>
-<p>I handled everything myself, from the design and animations to the hosting. The code lives in a GitHub repository connected to Cloudflare, so every update I push goes live automatically.</p>
-<div class="media photo"><img src="images/portfolio.png" alt="About page"></div>
-<div class="tags"><i>HTML</i><i>CSS</i><i>JavaScript</i><i>Cloudflare</i></div>
-<a class="btn" href="https://github.com/Ex-lted/alpintang-portfolio" target="_blank" rel="noopener">View on GitHub</a>
-</article>
+						<article class="proj rv">
+							<div class="ph">
+								<img class="pl" src="images/icon-2048.png" alt="Alpin.">
+								<small>Portfolio website</small>
+							</div>
+							<h3>This website</h3>
+							<p>I designed and built this portfolio website with plain HTML, CSS and JavaScript, with smooth page transitions, scroll-based animations, a light and dark theme you can switch between, and a layout that adapts from phones to wide screens.</p>
+							<p>I handled everything myself, from the design and animations to the hosting. The code lives in a GitHub repository connected to Cloudflare, so every update I push goes live automatically.</p>
+							<div class="media photo">
+								<img src="images/portfolio.png" alt="About page">
+							</div>
+							<div class="tags">
+								<i>HTML</i>
+								<i>CSS</i>
+								<i>JavaScript</i>
+								<i>Cloudflare</i>
+							</div>
+							<a class="btn" href="https://github.com/Ex-lted/alpintang-portfolio" target="_blank" rel="noopener">View on GitHub</a>
+						</article>
+					</div>
+				</div>
+			</div>
 
-</div>
+			<div class="page" id="contact">
+				<div class="contact bg bg-hill">
+					<h1 style="font-size:clamp(48px,10vw,104px)">Let’s talk.</h1>
+					<p class="sub">Open to projects, internships and good conversations.</p>
+					<div class="links">
+						<a class="btn" href="mailto:mail@alpintang.xyz"><span style="opacity:.55;font-weight:500;margin-right:10px">Email</span>mail@alpintang.xyz</a>
+						<a class="btn" href="https://www.linkedin.com/in/alpintang/" target="_blank" rel="noopener"><span style="opacity:.55;font-weight:500;margin-right:10px">LinkedIn</span>linkedin.com/in/alpintang</a>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer>© 2026 Alpin · alpintang.xyz</footer>
 
-</div>
-</div>
-
-<div class="page" id="contact">
-<div class="contact bg bg-hill">
-<h1 style="font-size:clamp(48px,10vw,104px)">Let’s talk.</h1>
-<p class="sub">Open to projects, internships and good conversations.</p>
-<div class="links">
-<a class="btn" href="mailto:mail@alpintang.xyz"><span style="opacity:.55;font-weight:500;margin-right:10px">Email</span>mail@alpintang.xyz</a>
-<a class="btn" href="https://www.linkedin.com/in/alpintang/" target="_blank" rel="noopener"><span style="opacity:.55;font-weight:500;margin-right:10px">LinkedIn</span>linkedin.com/in/alpintang</a>
-</div>
-</div>
-</div>
-</main>
-<footer>© 2026 Alpin · alpintang.xyz</footer>
-
-<script src="js/main.js"></script>
-<script src="js/effects.js"></script>
-<script src="js/sounds.js"></script>
-</body>
+		<script src="js/main.js"></script>
+		<script src="js/sounds.js"></script>
+		<script src="js/roadmap.js"></script>
+	</body>
 </html>

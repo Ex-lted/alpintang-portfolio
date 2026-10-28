@@ -1,0 +1,115 @@
+/* ==========================================================
+   About page: "My story" as a winding roadmap.
+   Built by js/roadmap.js (without JS the old timeline shows).
+   ========================================================== */
+
+.story.roadmap {
+  position: relative;
+  padding-left: 0;
+}
+
+.story.roadmap::before,
+.story.roadmap .step::before { display: none; }          /* hide the old straight line and dots */
+
+/* ---------- Cards: hidden until the road reaches them ---------- */
+.story.roadmap .step {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 72px;
+  opacity: 0;
+  transform: translateX(var(--from, 40px));
+  filter: blur(4px);
+  transition: opacity .8s cubic-bezier(.2, .7, .2, 1),
+              transform .9s cubic-bezier(.2, .7, .2, 1),
+              filter .8s cubic-bezier(.2, .7, .2, 1);
+}
+
+.story.roadmap .step:last-child { padding-bottom: 130px; }
+
+.story.roadmap .step.on { opacity: 1; transform: none; filter: none; }
+
+.story.roadmap.static .step { opacity: 1; transform: none; filter: none; transition: none; }
+
+.story.roadmap .step p { max-width: none; }
+
+/* Wide screens: cards alternate left and right of the road */
+@media (min-width: 760px) {
+  .story.roadmap .step { width: calc(50% - 120px); }
+  .story.roadmap .step:last-child { padding-bottom: 350px; }   /* room above the Oreo polaroid */
+  .story.roadmap .step.left  { margin-right: auto; --from: -44px; }
+  .story.roadmap .step.right { margin-left: auto;  --from: 44px; }
+}
+
+/* Phones: road runs down the left side */
+@media (max-width: 759px) {
+  .story.roadmap .step { margin-left: 62px; --from: 28px; }
+}
+
+/* ---------- The road (SVG) ---------- */
+.road {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.road .bed {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 1 12;
+}
+
+.road .drawn {
+  fill: none;
+  stroke-width: 5;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 7px color-mix(in srgb, var(--accent) 55%, transparent));
+}
+
+.road .branch {
+  stroke: var(--line);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition: stroke .5s;
+}
+
+.road .stop.on .branch,
+.road .branch.on { stroke: var(--accent); }
+
+/* Numbered stops */
+.road .ring   { fill: var(--bg); stroke: var(--line); stroke-width: 2; transition: stroke .5s; }
+.road .dot    { fill: var(--line); transition: fill .5s; }
+.road .num    { fill: var(--mute); font: 700 12px/1 system-ui, sans-serif; text-anchor: middle; dominant-baseline: central; transition: fill .5s; }
+.road .pip    { transform-box: fill-box; transform-origin: center; transform: scale(.8); transition: transform .4s; }
+
+.road .stop.on .ring { stroke: var(--accent); }
+.road .stop.on .dot  { fill: var(--accent); }
+.road .stop.on .num  { fill: var(--on-accent, #fff); }
+.road .stop.on .pip  { animation: stop-pop .6s cubic-bezier(.2, .9, .3, 1.4) forwards; }
+
+.road .halo { fill: none; stroke: var(--accent); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.road .stop.on.last .halo { animation: halo 2.4s ease-out infinite; }
+
+/* Moving dot at the end of the drawn road */
+.road .head-dot  { fill: var(--accent); stroke: var(--bg); stroke-width: 3; }
+.road .head-ring { fill: none; stroke: var(--accent); stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: halo 1.8s ease-out infinite; }
+
+@keyframes stop-pop {
+  0%   { transform: scale(.8); }
+  60%  { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+@keyframes halo {
+  0%   { transform: scale(1);   opacity: .55; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .road .stop.on .pip { animation: none; transform: none; }
+  .road .head-ring, .road .stop.on.last .halo { animation: none; }
+}
