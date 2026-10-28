@@ -42,3 +42,30 @@ document.querySelectorAll('video[data-auto]').forEach(function(v){vio.observe(v)
 addEventListener('resize',upd);
 show();
 })();
+
+(function () {
+  var root = document.documentElement, ticking = false;
+
+  function progress() {
+    ticking = false;
+    var max = root.scrollHeight - innerHeight;
+    root.style.setProperty('--progress', max > 0 ? Math.min(1, scrollY / max) : 0);
+  }
+
+  function queue() {
+    if (!ticking) { ticking = true; requestAnimationFrame(progress); }
+  }
+
+  addEventListener('scroll', queue, { passive: true });
+  addEventListener('resize', queue);
+  addEventListener('hashchange', function () { setTimeout(progress, 400); });
+  progress();
+
+  document.addEventListener('pointermove', function (e) {
+    var card = e.target.closest && e.target.closest('.proj');
+    if (!card) return;
+    var r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }, { passive: true });
+})();

@@ -20,6 +20,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/projects-grid.css">
+<link rel="stylesheet" href="css/effects.css">
 </head>
 <body>
 <header>
@@ -30,7 +32,7 @@
 <div class="page" id="about">
 <div class="hero left bg bg-me" id="hero">
 <div class="eyebrow">Hello, I’m</div>
-<h1>Alpin.</h1>
+<h1 class="jump" aria-label="Alpin."><span aria-hidden="true" style="--i:0">A</span><span aria-hidden="true" style="--i:1">l</span><span aria-hidden="true" style="--i:2">p</span><span aria-hidden="true" style="--i:3">i</span><span aria-hidden="true" style="--i:4">n</span><span aria-hidden="true" style="--i:5">.</span></h1>
 <p class="sub">Student. Software builder. Curious about how things work.</p>
 <div class="cue">Scroll ↓</div>
 </div>
@@ -70,7 +72,7 @@
 <h3>CLiCScrape</h3>
 <p>A Chrome extension that walks you through MMU’s enrollment pages step by step, retrieves the class options for the courses you pick from pages you open yourself, and generates timetables that fit around every one of them.</p>
 <p>Filter by free days, earliest start, latest end, or open classes only, then compare each plan as a weekly grid. Everything runs in your browser, with no server and no accounts.</p>
-<div class="media"><video src="videos/clicscrape-demo.mp4" poster="images/clicscrape-poster.jpg" loop playsinline controls preload="metadata" data-auto></video></div>
+<div class="media"><video src="videos/clicscrape-demo.mp4" poster="images/clicscrape-poster.jpg" muted loop playsinline controls preload="metadata" data-auto></video></div>
 <div class="tags"><i>JavaScript</i><i>Manifest V3</i><i>Shadow DOM</i><i>Chrome extension</i></div>
 <a class="btn" href="https://chromewebstore.google.com/detail/clicscrape/gokpfkgfplfjlohjpkokoeljhdjddpjc" target="_blank" rel="noopener">View on Chrome Web Store</a>
 </article>
@@ -91,5 +93,6 @@
 <footer>© 2026 Alpin · alpintang.xyz</footer>
 
 <script src="js/main.js"></script>
+<script src="js/effects.js"></script>
 </body>
 </html>
