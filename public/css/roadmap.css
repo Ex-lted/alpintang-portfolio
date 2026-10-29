@@ -34,7 +34,7 @@
 
 /* Wide screens: cards alternate left and right of the road */
 @media (min-width: 760px) {
-  .story.roadmap .step { width: calc(50% - 120px); }
+  .story.roadmap .step { width: calc(50% - 140px); }
   .story.roadmap .step:last-child { padding-bottom: 350px; }   /* room above the Oreo polaroid */
   .story.roadmap .step.left  { margin-right: auto; --from: -44px; }
   .story.roadmap .step.right { margin-left: auto;  --from: 44px; }
