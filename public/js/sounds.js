@@ -184,11 +184,11 @@
     wordWatch.observe(words, { subtree: true, attributes: true, attributeFilter: ['class'], attributeOldValue: true });
   }
 
-  FILES.riserSynth = 'sounds/riser-synth.mp3';
-  var RISER = 1;                 // overall riser volume: 0 = off, 0.6 = quieter, 1.5 = louder
-  var RISER_BASE = 0.8;          // base level of the recording (tuned by measurement)
-  var SPAN = 4.8;                // seconds of the recording the whole road scrubs through
-  var GRAIN = 0.14, HOP = 0.035; // tiny overlapping slices of the recording, 35 ms apart
+  FILES.riserSynth = 'sounds/synth-2.m4a';
+  var RISER = 1;
+  var RISER_BASE = 0.8; 
+  var SPAN = 4.8; 
+  var GRAIN = 0.14, HOP = 0.05;
 
   var storyEl = document.querySelector('.story');
   var rP = 0, rLastP = 0, rLastT = 0, rSpeed = 0, rLastScroll = 0, rTimer = 0, rRaf = 0;
