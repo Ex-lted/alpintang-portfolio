@@ -1,6 +1,6 @@
 # Alpin: Personal Portfolio
 
-A minimalist and abstract portfolio website for me, Alpin! Three pages, smooth scroll-driven animation, an interactive ASCII hero, a scroll-drawn story roadmap, and toggle-able sound design.
+A minimalist and abstract portfolio website for me, Alpin! Three pages, smooth scroll-driven animation, an interactive ASCII background, a scroll-drawn story roadmap, and toggle-able sound design.
 
 **Live site:** https://alpintang.xyz
 **Contact:** mail@alpintang.xyz
@@ -13,7 +13,7 @@ The site presents who I am, what I've built, and how to reach me, in three pages
 
 | Page | Purpose |
 |------|---------|
-| **About** | Hero with interactive ASCII background, plus a "My story" timeline rendered as a winding roadmap |
+| **About** | Interactive ASCII background, plus a "My story" timeline rendered as a winding roadmap |
 | **Projects** | Showcase of selected work (MYSverse, CLiCScrape, and more) |
 | **Contact** | Email address and social links |
 
@@ -22,7 +22,7 @@ The site presents who I am, what I've built, and how to reach me, in three pages
 ## Pages and Functions
 
 ### About
-- **Interactive ASCII hero background.** A field of ASCII characters that reacts to the cursor with a hover glow and to clicks with ripples that spread outward.
+- **Interactive ASCII background.** A field of ASCII characters that reacts to the cursor with a hover glow and to clicks with ripples that spread outward.
 - **"My story" roadmap.** A winding road that is drawn as you scroll, with numbered stops for each milestone
 
 ### Projects
