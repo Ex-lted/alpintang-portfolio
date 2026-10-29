@@ -290,5 +290,8 @@
   // addEventListener('scroll', placeHint, { passive: true });
   // setTimeout(showHint, 1500);
 
+    // Lets other scripts (the ASCII hero) play through this same system, so the mute button controls them too
+  window.siteSound = { play: play, isOn: function () { return on; } };
+
   setup();
 })();

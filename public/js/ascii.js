@@ -24,7 +24,9 @@
   var ACCENT = '168,198,134';                           // matcha (dark mode)
   var WHITE = '255,255,255';
   var INK = '29,29,31', ACCENT_L = '82,112,46';          // light mode: dark ink and a deeper matcha
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduceMQ = matchMedia('(prefers-reduced-motion: reduce)');
+  var reduce = reduceMQ.matches;                        // reduced motion: one still frame, no pointer or click effects
+  var STATIC_MS = 4000;                                 // the moment of the wave field that is frozen as the still frame
   var CW, CH, FONT, W = 0, H = 0, cols = 0, rows = 0, dpr = 1;
   var mask = null;                                      // per-cell 0.25..1: quiet behind the text, full strength elsewhere
   var mouse = { x: -99, y: -99, sx: -99, sy: -99, target: 0, s: 0 };
@@ -37,7 +39,7 @@
   }
   function applyTheme() {
     hero.classList.toggle('ascii-light', isLight());
-    if (reduce) draw(performance.now());
+    if (reduce) draw(STATIC_MS);
   }
   new MutationObserver(applyTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   if (dark.addEventListener) dark.addEventListener('change', applyTheme);
@@ -90,7 +92,7 @@
     g.setTransform(dpr, 0, 0, dpr, 0, 0);
     g.textBaseline = 'top';
     buildMask();
-    if (reduce) draw(performance.now());
+    if (reduce) draw(STATIC_MS);
   }
 
   function field(c, r, t) {                             // slow drifting waves, 0 to 1
@@ -182,6 +184,16 @@
     for (var k = 0; k < list.length; k++) g.fillText(list[k][0], list[k][1], list[k][2]);
   }
 
+  // ---------- Click sound: your recorded "pop" via sound.js, so the mute button controls it ----------
+  // Pitch follows where you click: left of the hero is low, right is high, on a
+  // pentatonic scale so rapid clicks stay pleasant instead of clashing.
+  var SCALE = [0, 2, 4, 7, 9, 12];                      // major pentatonic, semitones
+  function ping(x01) {
+    if (!window.siteSound) return;                      // sound.js not loaded (yet)
+    var step = SCALE[Math.min(SCALE.length - 1, Math.floor(Math.max(0, Math.min(0.999, x01)) * SCALE.length))];
+    window.siteSound.play('pop', { rate: 0.8 * Math.pow(2, step / 12), gap: 0.06 });
+  }
+
   function frame(now) {
     raf = requestAnimationFrame(frame);
     if (now - last < 33) return;                        // about 30 fps is plenty
@@ -199,18 +211,20 @@
   }
 
   addEventListener('pointermove', function (e) {
+    if (reduce) return;                                 // still frame: the cursor does nothing
     var p = pointer(e);
     if (!p) { mouse.target = 0; return; }
     mouse.x = p.x; mouse.y = p.y; mouse.target = 1;
     if (mouse.sx < -50) { mouse.sx = p.x; mouse.sy = p.y; }          // first move: start at the cursor
-    if (reduce) draw(performance.now());
   }, { passive: true });
   document.documentElement.addEventListener('pointerleave', function () { mouse.target = 0; });
   addEventListener('pointerdown', function (e) {
+    if (reduce) return;                                 // still frame: no ripple, no click sound
     var p = pointer(e);
     if (!p) return;
     ripples.push({ x: p.x, y: p.y, t0: performance.now() });
     if (ripples.length > 6) ripples.shift();
+    ping(p.x / cols);
   }, { passive: true });
 
   if (window.IntersectionObserver) new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; }, { threshold: 0 }).observe(hero);
@@ -219,4 +233,18 @@
   hero.classList.toggle('ascii-light', isLight());       // set before the first frame so there's no flash
   size();
   if (!reduce) raf = requestAnimationFrame(frame);
+
+  // If the setting is switched while the page is open, follow it without a reload
+  function onReduceChange() {
+    reduce = reduceMQ.matches;
+    if (reduce) {
+      cancelAnimationFrame(raf); raf = 0;
+      ripples = []; mouse.target = 0; mouse.s = 0;
+      draw(STATIC_MS);
+    } else if (!raf) {
+      raf = requestAnimationFrame(frame);
+    }
+  }
+  if (reduceMQ.addEventListener) reduceMQ.addEventListener('change', onReduceChange);
+  else if (reduceMQ.addListener) reduceMQ.addListener(onReduceChange);
 })();
