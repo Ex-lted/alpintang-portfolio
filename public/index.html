@@ -8,7 +8,7 @@
 
 		<meta name="description" content="Student, software builder, and curious about how things work.">
 		<meta name="color-scheme" content="light dark">
-		<meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+		<meta name="theme-color" content="#f1ecdf" media="(prefers-color-scheme: light)">
 		<meta name="theme-color" content="#121214" media="(prefers-color-scheme: dark)">
 		<link rel="canonical" href="https://www.alpintang.xyz/">
 		<meta property="og:type" content="website">
@@ -28,7 +28,7 @@
 		<link rel="apple-touch-icon" href="apple-touch-icon.png">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&family=Caveat:wght@600&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/roadmap.css">
 	</head>
@@ -65,7 +65,7 @@
 						<p class="words" id="words">I’m a Chinese-Indonesian born in Pulau Pinang in 2007. I’ve been curious about technology for as long as I can remember. When I was 7, my parents gifted me a PC, and that’s where everything started.</p>
 					</div>
 				</section>
-				<section style="padding-top:0">
+				<section class="flush">
 					<div class="wrap" style="position:relative">
 						<h2 class="rv">My story.</h2>
 						<div class="story">
@@ -74,24 +74,21 @@
 								<h3>It started with Roblox Studio.</h3>
 								<p>My programming journey began at 11 years old in the Roblox Studio ecosystem. Nobody handed me a course. I taught myself, one personal game project at a time, building things, breaking them, and slowly figuring out why they broke.</p>
 							</div>
-							<div class="step rv" style="padding: left 100px">
+							<div class="step rv">
 								<small>2022</small>
 								<h3>Going (sort of) professional.</h3>
 								<p>All that self-taught tinkering grew into something real. In 2022 I was given a contributor position at a game development company, and working on live games alongside a proper team sharpened my technical skills far beyond what I could have managed on my own.</p>
 							</div>
 							<div class="step rv">
 								<small>Early 2025</small>
-								<h3>SPM done, time to level up.</h3>
+								<h3>SPM done, and a new role.</h3>
 								<p>After finishing my SPM in early 2025, I moved into a part-time contracted developer role at the same company. I kept contributing to their platform until July 2025, right before university began.</p>
 							</div>
 							<div class="step rv">
 								<small>Today</small>
 								<h3>Now at Multimedia University.</h3>
 								<p>These days I’m balancing coursework, team projects and tools of my own, like CLiCScrape. Outside of code, I love photography and hiking.</p>
-							</div>
-						</div>
-						<p class="rv closing">Always building, always learning. If that sounds like someone you’d like to work with, say hi.</p>
-						<div class="pol rv">
+						<div class="pol">
 							<div class="polaroid">
 								<span class="tape t1"></span>
 								<span class="tape t2"></span>
@@ -99,30 +96,35 @@
 								<p>Say hi to Oreo!</p>
 							</div>
 						</div>
+							</div>
+						</div>
+						<p class="rv closing">If you’re working on something and need someone who ships, say hi.</p>
 					</div>
 				</section>
-				<section class="edu" style="padding-top:20px">
+				<section class="edu tight">
 					<div class="wrap">
-						<a class="btn rv" href="#projects" style="margin-top:0">See my work</a>
+						<a class="btn first rv" href="#projects">See my work</a>
 					</div>
 				</section>
 			</div>
 
 			<div class="page" id="projects">
 				<div class="phead bg bg-laptop">
-					<h1 style="font-size:clamp(44px,9vw,96px)">Projects.</h1>
+					<h1>Projects.</h1>
 					<p>Things I’ve built and shipped.</p>
 				</div>
 				<div class="wrap">
 					<div class="proj-grid">
 						<article class="proj rv">
+							<div class="proj-text">
 							<div class="ph">
 								<img class="pl" src="images/mysverse-icon.jpg" alt="MYSverse logo" width="44" height="44" loading="lazy" decoding="async">
 								<small>Game development</small>
 							</div>
 							<h3>MYSverse</h3>
-							<p>I contributed to MYSverse for three years and worked there as a part-time contract game developer. I programmed interactive minigames and core gameplay features for titles including Lebuhraya and Bandaraya, then kept the games healthy after release by monitoring player feedback and community reports and prioritising the most critical bugs for fixes.</p>
+							<p>I contributed to MYSverse for three years and worked there as a part-time contract game developer. I programmed interactive minigames and core gameplay features for titles including <a href="https://www.roblox.com/games/4892731894/Lebuhraya-Malaysian-Driving-RP" target="_blank" rel="noopener">Lebuhraya</a> and <a href="https://www.roblox.com/games/481538620/Bandaraya" target="_blank" rel="noopener">Bandaraya</a>, then kept the games healthy after release by monitoring player feedback and community reports and prioritising the most critical bugs for fixes.</p>
 							<p>Through iterative updates, I improved overall playability and player retention.</p>
+							</div>
 							<div class="media photo">
 								<img src="images/mysverse-photo.jpg" alt="MYSverse contributor badge, lanyard and dev shirt" loading="lazy" decoding="async">
 							</div>
@@ -136,6 +138,7 @@
 						</article>
 
 						<article class="proj rv">
+							<div class="proj-text">
 							<div class="ph">
 								<img class="pl" src="images/clicscrape-icon.png" alt="CLiCScrape logo" width="44" height="44" loading="lazy" decoding="async">
 								<small>Chrome extension</small>
@@ -143,6 +146,7 @@
 							<h3>CLiCScrape</h3>
 							<p>A Chrome extension that walks you through MMU’s enrollment pages step by step, retrieves the class options for the courses you pick from pages you open yourself, and generates timetables that fit around every one of them.</p>
 							<p>Filter by free days, earliest start, latest end, or open classes only, then compare each plan as a weekly grid. Everything runs in your browser, with no server and no accounts.</p>
+							</div>
 							<div class="media">
 								<video src="videos/clicscrape-demo.mp4" poster="images/clicscrape-poster.jpg" aria-label="CLiCScrape demo video" muted loop playsinline controls preload="metadata" data-auto></video>
 							</div>
@@ -156,13 +160,15 @@
 						</article>
 
 						<article class="proj rv">
+							<div class="proj-text">
 							<div class="ph">
 								<img class="pl" src="images/icon-2048.png" alt="Alpin" width="44" height="44" loading="lazy" decoding="async">
 								<small>Portfolio website</small>
 							</div>
 							<h3>This website</h3>
-							<p>Built with HTML, CSS, and JavaScript, this portfolio website features smooth animations, an interactive ASCII header, and an overall clean abstract UI. Its responsive design works on both phones and computers.</p>
-							<p>I designed and built the entire website myself, including its animations and layout. It is hosted on Cloudflare that is connected to GitHub. Check out the source code out below.</p>
+							<p>Plain HTML, CSS and JavaScript, with scroll animations, an interactive ASCII header and a layout that holds up on both phones and desktops.</p>
+							<p>I designed and built all of it myself. It’s hosted on Cloudflare, deployed from GitHub, and the source is linked below.</p>
+							</div>
 							<div class="media photo">
 								<img src="images/portfolio.png" alt="Screenshot of the About page of this website" loading="lazy" decoding="async">
 							</div>
@@ -180,11 +186,11 @@
 
 			<div class="page" id="contact">
 				<div class="contact bg bg-hill">
-					<h1 style="font-size:clamp(48px,10vw,104px)">Let’s talk.</h1>
+					<h1>Let’s talk.</h1>
 					<p class="sub">Open to projects, internships and good conversations.</p>
 					<div class="links">
-						<a class="btn" href="mailto:mail@alpintang.xyz"><span style="opacity:.55;font-weight:500;margin-right:10px">Email</span>mail@alpintang.xyz</a>
-						<a class="btn" href="https://www.linkedin.com/in/alpintang/" target="_blank" rel="noopener"><span style="opacity:.55;font-weight:500;margin-right:10px;text-transform: none;">LinkedIn</span><span style ="text-transform: none;">linkedin.com/in/alpintang</span></a>
+						<a class="btn" href="mailto:mail@alpintang.xyz"><span class="k">Email</span>mail@alpintang.xyz</a>
+						<a class="btn plain" href="https://www.linkedin.com/in/alpintang/" target="_blank" rel="noopener"><span class="k">LinkedIn</span>linkedin.com/in/alpintang</a>
 					</div>
 				</div>
 			</div>

@@ -20,7 +20,7 @@
   function load() {
     Object.keys(FILES).forEach(function (name) {
       fetch(FILES[name]).then(function (r) { return r.arrayBuffer(); })
-        .then(decode).then(function (b) { buffers[name] = b; console.log('loaded', name); }).catch(function (e) { console.log('FAILED', name, e); });
+        .then(decode).then(function (b) { buffers[name] = b; }).catch(function () {});
     });
   }
 
@@ -89,7 +89,7 @@
   paint();
 
   /* ---------- hover: soft tick ---------- */
-  var HOVER = 'nav a, .btn, .tags i, .proj, #theme, #sound';
+  var HOVER = 'nav a, .btn, .tags li, .proj, #theme, #sound';
   var hovered = null;
 
   document.addEventListener('pointerover', function (e) {

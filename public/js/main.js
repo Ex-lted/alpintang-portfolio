@@ -169,12 +169,4 @@
   addEventListener('resize', queue);
   addEventListener('hashchange', function () { setTimeout(progress, 400); });
   progress();
-
-  document.addEventListener('pointermove', function (e) {
-    var card = e.target.closest && e.target.closest('.proj');
-    if (!card) return;
-    var r = card.getBoundingClientRect();
-    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-  }, { passive: true });
 })();

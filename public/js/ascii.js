@@ -10,7 +10,7 @@
     '#hero.ascii-light{background-color:var(--bg);color:var(--fg)}' +
     '#hero.ascii-light::before{background:none}' +
     '#hero.ascii-light h1{color:var(--fg)}' +
-    '#hero.ascii-light .eyebrow{color:var(--accent);opacity:1}' +
+    '#hero.ascii-light .eyebrow{color:var(--accent-ink);opacity:1}' +
     '#hero.ascii-light .sub,#hero.ascii-light .cue{color:var(--mute)}';
   document.head.appendChild(style);
 
@@ -128,6 +128,7 @@
   // Target box for the art, as fractions of the hero (x0, y0, x1, y1). Tweak these to move or resize it.
   var BOX = { x0: 0.44, y0: 0.10, x1: 0.97, y1: 0.99 };
   function layoutArt() {
+    if (!ART_W) return;                                 // no art supplied: nothing to lay out
     var small = W < 760;
     var bx = BOX.x0 * W, by = BOX.y0 * H, bw = (BOX.x1 - BOX.x0) * W, bh = (BOX.y1 - BOX.y0) * H;
     if (small) { bx = W * 0.15; bw = W * 0.8; by = H * 0.5; bh = H * 0.47; }
@@ -201,6 +202,7 @@
     x.shadowBlur = 0; x.shadowColor = 'transparent';
   }
   function buildArt() {
+    if (!ART_W) return;                                 // no art supplied: skip the offscreen layers
     if (!W || !H) return;
     var light = isLight();
     var tw = art.w + art.pad * 2, th = art.h + art.pad * 2;
@@ -406,8 +408,8 @@
   // the cream, so they read as daylight rather than light emitted from the dark.
   var GLOWS = [
     { x: 0.11, y: 0.30, r: 0.34, rgb: '115,138,110', a: 0.6, p: 0.00 },   // sage green
-    { x: 0.62, y: 0.14, r: 0.30, rgb: '128,1,31', a: 0.5, p: 2.10 },   // burgundy
-    { x: 0.91, y: 0.70, r: 0.34, rgb: '129,118,160', a: 0.6, p: 4.20 }    // purple
+    { x: 0.62, y: 0.14, r: 0.30, rgb: '214,190,140', a: 0.45, p: 2.10 },   // warm sand
+    { x: 0.91, y: 0.70, r: 0.34, rgb: '168,198,134', a: 0.5, p: 4.20 }    // matcha
   ];
   function glow(t) {
     var span = Math.max(W, H * 1.6);
