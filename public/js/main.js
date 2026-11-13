@@ -1,7 +1,7 @@
 (function () {
   var pages = ['about', 'projects', 'contact'];
-  var PATHS = { about: '/', projects: '/projects', contact: '/contact' };
-  var TITLES = { about: document.title, projects: 'Projects | Alpin', contact: 'Contact | Alpin' };
+  var PATHS = { about: '/about', projects: '/projects', contact: '/contact' };
+  var TITLES = { about: 'About - Alpin', projects: 'Projects - Alpin', contact: 'Contact - Alpin' };
   var canonEl = document.querySelector('link[rel="canonical"]');
   var SITE = canonEl ? canonEl.getAttribute('href').replace(/\/+$/, '') : '';
   var links = document.querySelectorAll('nav a');
