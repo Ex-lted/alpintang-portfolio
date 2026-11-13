@@ -1,5 +1,9 @@
 (function () {
   var pages = ['about', 'projects', 'contact'];
+  var PATHS = { about: '/', projects: '/projects', contact: '/contact' };
+  var TITLES = { about: document.title, projects: 'Projects | Alpin', contact: 'Contact | Alpin' };
+  var canonEl = document.querySelector('link[rel="canonical"]');
+  var SITE = canonEl ? canonEl.getAttribute('href').replace(/\/+$/, '') : '';
   var links = document.querySelectorAll('nav a');
 
   function swap(id) {
@@ -20,8 +24,23 @@
   var leaveT;
 
   function show() {
-    var id = (location.hash || '').replace('#', '');
-    if (pages.indexOf(id) < 0) id = 'about';
+    var path = location.pathname.replace(/\/+$/, '') || '/';
+    var id = 'about';
+    pages.forEach(function (page) {
+      if (PATHS[page] === path) id = page;
+    });
+    // old links like /#projects keep working
+    var legacy = (location.hash || '').replace('#', '');
+    if (path === '/' && pages.indexOf(legacy) >= 0) id = legacy;
+
+    // normalise the address bar (trailing slash, #hash, unknown path)
+    if ((location.pathname !== PATHS[id] || location.hash) && history.replaceState) {
+      history.replaceState(null, '', PATHS[id] + location.search);
+    }
+
+    document.title = TITLES[id];
+    var canon = document.querySelector('link[rel="canonical"]');
+    if (canon) canon.setAttribute('href', SITE + PATHS[id]);
 
     var currentPage = document.querySelector('.page.active');
     links.forEach(function (link) {
@@ -96,7 +115,19 @@
       requestAnimationFrame(upd);
     }
   }, { passive: true });
-  addEventListener('hashchange', show);
+  addEventListener('popstate', show);
+
+  // Page links switch pages without a reload
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest && e.target.closest('a[data-p]');
+    if (!a || !PATHS[a.dataset.p]) return;
+    e.preventDefault();
+    var target = PATHS[a.dataset.p];
+    if (location.pathname !== target) history.pushState(null, '', target);
+    else window.scrollTo(0, 0);
+    show();
+  });
 
   var root = document.documentElement;
   var tb = document.getElementById('theme');
@@ -167,6 +198,6 @@
 
   addEventListener('scroll', queue, { passive: true });
   addEventListener('resize', queue);
-  addEventListener('hashchange', function () { setTimeout(progress, 400); });
+  addEventListener('popstate', function () { setTimeout(progress, 400); });
   progress();
 })();

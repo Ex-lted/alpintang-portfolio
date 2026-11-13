@@ -5,8 +5,8 @@
   var DEFAULT_ON = false;
 
   // Recorded CC0 sounds (see sounds/CREDITS.txt) and their volumes (0 to 1)
-  var FILES = { click: 'sounds/click.mp3', nav: 'sounds/nav.mp3', tick: 'sounds/tick.mp3',
-                pop: 'sounds/pop.mp3', impact: 'sounds/impact.mp3' };
+  var FILES = { click: '/sounds/click.mp3', nav: '/sounds/nav.mp3', tick: '/sounds/tick.mp3',
+                pop: '/sounds/pop.mp3', impact: '/sounds/impact.mp3' };
   var VOL = { click: 0.5, nav: 0.3, tick: 0.12, pop: 0.22, impact: 0.35 };
 
   var on = DEFAULT_ON;
@@ -105,7 +105,7 @@
   }, { passive: true });
 
   /* ---------- presses ---------- */
-  var PAGE_LINK = 'a[href^="#"]';        // About / Projects / Contact links and "See my work"
+  var PAGE_LINK = 'a[data-p]';           // About / Projects / Contact links and "See my work"
   var PRESS = 'a.btn, #sound';           // other buttons: external links, email
   var navPressedAt = -1e9;
 
@@ -122,12 +122,13 @@
     if (el && el.id !== 'sound') play('click', { rate: jitter(1, 0.04) });
   }, { passive: true });
 
-  // Back/forward buttons and keyboard use change the page without a pointer press
-  addEventListener('hashchange', function () {
+  // Back/forward buttons change the page without a pointer press
+  addEventListener('popstate', function () {
     if (performance.now() - navPressedAt > 800) pageChange();
   });
 
   document.addEventListener('click', function (e) {
+    if (e.detail === 0 && e.target.closest && e.target.closest(PAGE_LINK)) pageChange();   // keyboard activation of a page link
     var el = e.target.closest && e.target.closest(PRESS);
     if (el && e.detail === 0 && el.id !== 'sound' && !el.matches(PAGE_LINK)) play('click');   // keyboard activation
     if (e.target.closest && e.target.closest('#theme')) {                   // light/dark switch: the "flash"
